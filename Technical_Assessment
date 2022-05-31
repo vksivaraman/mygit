@@ -47,8 +47,8 @@ resource "azurerm_storage_account" "testsa" {
 
 }
 
-Creating S3 storage
-===================
+Creating S3 storage using JSON and Integrating Jenkins server
+=============================================================
 
 {
   "Version": "2012-10-17",
