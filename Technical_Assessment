@@ -22,3 +22,22 @@ resource "aws_instance" "app_server" {
     Name = "ExampleAppServerInstance"
   }
 }
+
+
+provider "azurerm" {
+  version = "=1.28.0"
+}
+
+resource "azurerm_resource_group" "test" {
+  name     = "production"
+  location = "West US"
+}
+
+resource "azurerm_storage_account" "testsa" {
+  name                     = "${var.storageAccountName}"
+  resource_group_name      = "${azurerm_resource_group.testrg.name}"
+  location                 = "${var.region}"
+  account_tier             = "${var.tier}"
+  account_replication_type = "${var.replicationType}"
+
+}
