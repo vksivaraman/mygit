@@ -1,4 +1,5 @@
-Creating VM using Terraform 
+Creating AWS VM using Terraform 
+===============================
 
 terraform {
   required_providers {
@@ -25,6 +26,8 @@ resource "aws_instance" "app_server" {
   }
 }
 
+Spinning another Azure VM
+=========================
 
 provider "azurerm" {
   version = "=1.28.0"
@@ -44,7 +47,8 @@ resource "azurerm_storage_account" "testsa" {
 
 }
 
-Creating S3 storage 
+Creating S3 storage
+===================
 
 {
   "Version": "2012-10-17",
