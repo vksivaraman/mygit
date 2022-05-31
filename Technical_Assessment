@@ -26,8 +26,8 @@ resource "aws_instance" "app_server" {
   }
 }
 
-Spinning another Azure VM
-=========================
+Spinning another VM using ARM
+=============================
 
 provider "azurerm" {
   version = "=1.28.0"
