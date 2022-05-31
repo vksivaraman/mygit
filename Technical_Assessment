@@ -46,23 +46,3 @@ resource "azurerm_storage_account" "testsa" {
   account_replication_type = "${var.replicationType}"
 
 }
-
-Creating S3 storage using JSON and Integrating Jenkins server
-=============================================================
-
-{
-  "Version": "2012-10-17",
-  "Id": "S3PolicyId1",
-  "Statement": [
-    {
-      "Sid": "IPAllow",
-      "Effect": "Allow",
-      "Principal": "*",
-      "Action": "s3:*",
-      "Resource": "arn:aws:s3:::examplebucket/*",
-      "Condition": {
-         "IpAddress": {"aws:SourceIp": "x.x.x.x/x"},  <--- IP of the Jenkins server
-      } 
-    } 
-  ]
-}
