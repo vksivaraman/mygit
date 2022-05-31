@@ -1,0 +1,24 @@
+#!/bin/sh
+# set -x
+# Shell script to monitor or watch the all file system
+# It will send an email to $ADMIN, if the (free available) percentage of space is >= 90%.
+# -------------------------------------------------------------------------
+# Set admin email so that you can get email.
+ADMIN="root"
+# set alert level 90% is default
+ALERT=90
+#
+#::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+#
+function main_prog() {
+while read output;
+do
+#echo $output
+  usep=$(echo $output | awk '{ print $1}' | cut -d'%' -f1)
+  partition=$(echo $output | awk '{print $2}')
+  if [ $usep -ge $ALERT ] ; then
+     echo "Running out of space \"$partition ($usep%)\" on server $(hostname), $(date)" | \
+     mail -s "Action immediately: Almost out of disk space $usep%" $ADMIN
+  fi
+done
+}
